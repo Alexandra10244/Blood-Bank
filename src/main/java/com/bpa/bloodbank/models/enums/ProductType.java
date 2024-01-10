@@ -6,7 +6,4 @@ public enum ProductType {
     masa_eritrocitara,
     plasma,
     trombocite
-
-
-
 }

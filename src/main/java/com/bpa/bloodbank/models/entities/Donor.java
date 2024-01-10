@@ -3,9 +3,11 @@ package com.bpa.bloodbank.models.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Set;
+
 @Data
 @Entity
-@Table(name = "donor")
+@Table(name = "donors")
 public class Donor {
 
     @Id
@@ -25,4 +27,11 @@ public class Donor {
     private Boolean rh;
     @Column(name = "comorbidities")
     private String comorbidities;
+
+    @OneToMany(mappedBy = "donor")
+    private Set<Donation> donations;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Address address;
 }
