@@ -13,7 +13,6 @@ public class AddressDTO {
     private String county;
     @NotBlank(message = "This field must not be empty!")
     private String city;
-    @NotBlank(message = "This field must not be empty!")
     private String street;
     @NotBlank(message = "This field must not be empty!")
     private int number;

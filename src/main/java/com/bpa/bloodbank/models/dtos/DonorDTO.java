@@ -20,7 +20,8 @@ public class DonorDTO {
     @NotBlank(message = "This field must not be empty!")
     private String bloodType;
     @NotBlank(message = "This field must not be empty!")
-    private Boolean rh;
+    private String rh;
     @NotBlank(message = "This field must not be empty!")
     private String comorbidities;
+    private AddressDTO address;
 }

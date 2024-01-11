@@ -14,5 +14,8 @@ public interface CenterRepository extends JpaRepository<Center,Long> {
     @Query("SELECT center FROM Center center WHERE LOWER(center.centerName) = LOWER(:centerName)")
     Optional<Center> findCenterByNameIgnoreCase(@Param("centerName") String centerName);
 
+//    @Query(value = "SELECT * FROM centers WHERE center_name = :centerName", nativeQuery = true)
+//    Optional<Center> findCenterByNameIgnoreCase(@Param("centerName") String centerName);
+
     Optional<Center> findByEmail(String email);
 }

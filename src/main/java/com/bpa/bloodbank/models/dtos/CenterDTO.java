@@ -15,4 +15,5 @@ public class CenterDTO {
     private String phoneNumber;
     @NotBlank(message = "This field must not be empty!")
     private String centerName;
+    private AddressDTO address;
 }

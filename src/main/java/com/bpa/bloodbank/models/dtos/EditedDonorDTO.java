@@ -8,6 +8,6 @@ public class EditedDonorDTO {
     private String email;
     private String phoneNumber;
     private String bloodType;
-    private Boolean rh;
+    private String rh;
     private String comorbidities;
 }

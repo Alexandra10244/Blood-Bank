@@ -20,6 +20,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @Slf4j
@@ -33,9 +34,19 @@ public class ExceptionHandlerAdvice extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(objectToString(Map.of("message", donorNotFoundException.getMessage())), NOT_FOUND);
     }
 
+    @ExceptionHandler(DonationNotFoundException.class)
+    public ResponseEntity<String> donationNotFoundException(DonationNotFoundException donationNotFoundException) {
+        return new ResponseEntity<>(objectToString(Map.of("message", donationNotFoundException.getMessage())), NOT_FOUND);
+    }
+
     @ExceptionHandler(CenterNotFoundException.class)
     public ResponseEntity<String> centerNotFoundException(CenterNotFoundException centerNotFoundException) {
         return new ResponseEntity<>(objectToString(Map.of("message", centerNotFoundException.getMessage())), NOT_FOUND);
+    }
+
+    @ExceptionHandler(InvalidDateException.class)
+    public ResponseEntity<String> invalidDateException(InvalidDateException invalidDateException) {
+        return new ResponseEntity<>(objectToString(Map.of("message", invalidDateException.getMessage())), BAD_REQUEST);
     }
 
     @ExceptionHandler(ConstraintViolationException.class)

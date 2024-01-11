@@ -3,6 +3,7 @@ package com.bpa.bloodbank.service.implementations;
 import com.bpa.bloodbank.exceptions.DonorNotFoundException;
 import com.bpa.bloodbank.models.dtos.DonorDTO;
 import com.bpa.bloodbank.models.dtos.EditedDonorDTO;
+import com.bpa.bloodbank.models.entities.Address;
 import com.bpa.bloodbank.models.entities.Donor;
 import com.bpa.bloodbank.repositories.DonorRepository;
 import com.bpa.bloodbank.service.interfaces.DonorService;
@@ -20,9 +21,18 @@ public class DonorServiceImpl implements DonorService {
 
     @Override
     public DonorDTO createDonor(DonorDTO donorDTO) {
-        Donor donor = donorRepository.save(objectMapper.convertValue(donorDTO, Donor.class));
-
-        return objectMapper.convertValue(donor, DonorDTO.class);
+        Donor donor = Donor.builder()
+                .firstName(donorDTO.getFirstName())
+                .lastName(donorDTO.getLastName())
+                .email(donorDTO.getEmail())
+                .phoneNumber(donorDTO.getPhoneNumber())
+                .bloodType(donorDTO.getBloodType())
+                .rh(donorDTO.getRh())
+                .address(objectMapper.convertValue(donorDTO.getAddress(), Address.class))
+                .build();
+        return objectMapper.convertValue(donorRepository.save(donor), DonorDTO.class);
+//        Donor donor = donorRepository.save(objectMapper.convertValue(donorDTO, Donor.class));
+//        return objectMapper.convertValue(donor, DonorDTO.class);
     }
 
     @Override

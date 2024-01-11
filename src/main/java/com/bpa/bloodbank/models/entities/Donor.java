@@ -1,11 +1,17 @@
 package com.bpa.bloodbank.models.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Set;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "donors")
 public class Donor {
@@ -24,7 +30,7 @@ public class Donor {
     @Column(name = "blood_type")
     private String bloodType;
     @Column(name = "rh")
-    private Boolean rh;
+    private String rh;
     @Column(name = "comorbidities")
     private String comorbidities;
 
