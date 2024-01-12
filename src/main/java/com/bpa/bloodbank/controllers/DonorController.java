@@ -1,6 +1,7 @@
 package com.bpa.bloodbank.controllers;
 
 import com.bpa.bloodbank.models.dtos.DonorDTO;
+import com.bpa.bloodbank.models.dtos.DonorProjectionDTO;
 import com.bpa.bloodbank.models.dtos.EditedDonorDTO;
 import com.bpa.bloodbank.service.interfaces.DonorService;
 import jakarta.validation.Valid;
@@ -40,4 +41,8 @@ public class DonorController {
         return  ResponseEntity.ok(donorService.updateDonor(id,donorDTO));
     }
 
+    @GetMapping("/bloodType/rh")
+    public ResponseEntity<List<DonorProjectionDTO>> findDonorByBloodTypeAndRh(@RequestParam String bloodType, @RequestParam String rh){
+        return ResponseEntity.ok(donorService.findDonorByBloodTypeAndRh(bloodType, rh));
+    }
 }
