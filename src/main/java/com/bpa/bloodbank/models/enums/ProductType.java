@@ -2,8 +2,8 @@ package com.bpa.bloodbank.models.enums;
 
 public enum ProductType {
 
-    sange_integral,
-    masa_eritrocitara,
-    plasma,
-    trombocite
+    WHOLE_BLOOD,
+    RED_BLOOD_CELLS,
+    PLASMA,
+    PLATELETS
 }

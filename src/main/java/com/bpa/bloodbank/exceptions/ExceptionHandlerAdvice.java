@@ -49,6 +49,11 @@ public class ExceptionHandlerAdvice extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(objectToString(Map.of("message", invalidDateException.getMessage())), BAD_REQUEST);
     }
 
+    @ExceptionHandler(IncorrectFilterParametersException.class)
+    public ResponseEntity<String> incorrectFilter(IncorrectFilterParametersException incorrectFilterParametersException) {
+        return new ResponseEntity<>(objectToString(Map.of("message", incorrectFilterParametersException.getMessage())), BAD_REQUEST);
+    }
+
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<Object> handleConstraintViolationException(ConstraintViolationException ex, WebRequest request) {
         Map<String, String> errors = new LinkedHashMap<>();

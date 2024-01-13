@@ -20,9 +20,4 @@ public interface DonorRepository extends JpaRepository<Donor, Long> {
     List<DonorProjection> findDonorByBloodTypeAndRh(@Param("bloodType") String bloodType,
                                                     @Param("rh") String rh);
 
-//    @Query(value = "SELECT donors.first_name, donors.last_name " +
-//            "FROM(donors " +
-//            "WHERE YEAR(donations.bloodCollectionDate)= :year " +
-//            "GROUP BY donor.id HAVING COUNT(donation)>3")
-//    List<DonationsProjection> findDonorsWithMoreThan3DonationsInYear(@Param("year") int year);
 }

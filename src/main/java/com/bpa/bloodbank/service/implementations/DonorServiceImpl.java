@@ -34,8 +34,6 @@ public class DonorServiceImpl implements DonorService {
                 .address(objectMapper.convertValue(donorDTO.getAddress(), Address.class))
                 .build();
         return objectMapper.convertValue(donorRepository.save(donor), DonorDTO.class);
-//        Donor donor = donorRepository.save(objectMapper.convertValue(donorDTO, Donor.class));
-//        return objectMapper.convertValue(donor, DonorDTO.class);
     }
 
     @Override
@@ -63,7 +61,7 @@ public class DonorServiceImpl implements DonorService {
         if (donorDTO.getPhoneNumber() != null && !donorDTO.getPhoneNumber().isEmpty()) {
             donor.setPhoneNumber(donorDTO.getPhoneNumber());
         }
-        if (donorDTO.getBloodType() != null && !donorDTO.getBloodType().isEmpty()) {
+        if (donorDTO.getBloodType() != null) {
             donor.setBloodType(donorDTO.getBloodType());
         }
         if (donorDTO.getRh() != null) {
@@ -115,9 +113,9 @@ public class DonorServiceImpl implements DonorService {
 
         for (DonorProjection donorProjection : donorProjections) {
             DonorProjectionDTO donorProjectionDTO = new DonorProjectionDTO();
-            donorProjectionDTO.setFirstName(donorProjection.getFirstName());
-            donorProjectionDTO.setLastname(donorProjection.getLastName());
-            donorProjectionDTO.setBloodType(donorProjection.getBloodType());
+            donorProjectionDTO.setFirstName(donorProjection.getFirst_name());
+            donorProjectionDTO.setLastname(donorProjection.getLast_name());
+            donorProjectionDTO.setBloodType(donorProjection.getBlood_type());
             donorProjectionDTO.setRh(donorProjection.getRh());
             donorProjectionDTOs.add(donorProjectionDTO);
         }

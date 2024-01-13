@@ -1,5 +1,7 @@
 package com.bpa.bloodbank.models.entities;
 
+import com.bpa.bloodbank.models.enums.BloodType;
+import com.bpa.bloodbank.models.enums.Rh;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,10 +29,12 @@ public class Donor {
     private String email;
     @Column(name = "phone_number")
     private String phoneNumber;
+    @Enumerated(EnumType.STRING)
     @Column(name = "blood_type")
-    private String bloodType;
+    private BloodType bloodType;
+    @Enumerated(EnumType.STRING)
     @Column(name = "rh")
-    private String rh;
+    private Rh rh;
     @Column(name = "comorbidities")
     private String comorbidities;
 
